@@ -32,3 +32,28 @@ if (!isNaN(num)) {
     ? console.log(`Вместо числа введен текст на кирилице.`)
     : console.log(`Вместо числа введен текст на латинице.`);
 }
+
+const num1 = +prompt("Введите первое число:");
+if (num1) {
+  const num2 = +prompt("Введите второе число:");
+  if (num2) {
+    const num3 = +prompt("Введите третье число:");
+    if (num3) {
+      (!isNaN(num1) && !isNaN(num2) && !isNaN(num3)) ? alert(num1 + num2 + num3): alert("Данные введены некорректно!");
+    } else {
+      console.log("");
+    }
+  } else {
+    console.log("");
+  }
+} else {
+  console.log("");
+}
+
+const usName = prompt("Введите ваше имя:");
+if(usName) {
+  const age = +prompt("Введите ваш возраст:");
+  (age >= 18) ? alert(`Добро пожаловать, ${usName}!`):alert(`Извините, ${usName}, доступ закрыт!`);
+} else {
+  console.log("");
+}
