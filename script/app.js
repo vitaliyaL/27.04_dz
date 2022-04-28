@@ -1,4 +1,4 @@
-const userName = prompt("Введите ваше имя:");
+const userName = prompt("Задание 1: \nВведите ваше имя:");
 const userSurname = prompt("Введите вашу фамилию:");
 const login = prompt("Введите ваш никнейм:");
 if (userName && userSurname) {
@@ -17,23 +17,27 @@ function isCyrillic(str) {
 function isInteger(num) {
   return (num ^ 0) === num;
 }
-const str = prompt("Введите любое число:");
-console.log(`Вы ввели: ${str}.`);
-const num = +str;
-if (!isNaN(num)) {
-  let str = "Введенное вами число ";
-  num >= 100 ? (str += "больше ста, ") : (str += "меньше ста, ");
-  num % 2 === 0 ? (str += "четное, ") : (str += "нечетное, ");
-  isInteger(num) ? (str += "недробное, ") : (str += "дробное, ");
-  num >= 0 ? (str += "положительное.") : (str += "отрицательное.");
-  console.log(str);
+const str = prompt("Задание 2: \nВведите любое число:");
+if (str) {
+  console.log(`Вы ввели: ${str}.`);
+  const num = +str;
+  if (!isNaN(num)) {
+    let str = "Введенное вами число ";
+    num >= 100 ? (str += "больше ста, ") : (str += "меньше ста, ");
+    num % 2 === 0 ? (str += "четное, ") : (str += "нечетное, ");
+    isInteger(num) ? (str += "недробное, ") : (str += "дробное, ");
+    num >= 0 ? (str += "положительное.") : (str += "отрицательное.");
+    console.log(str);
+  } else {
+    isCyrillic(str)
+      ? console.log(`Вместо числа введен текст на кирилице.`)
+      : console.log(`Вместо числа введен текст на латинице.`);
+  }
 } else {
-  isCyrillic(str)
-    ? console.log(`Вместо числа введен текст на кирилице.`)
-    : console.log(`Вместо числа введен текст на латинице.`);
+  console.log("");
 }
 
-const num1 = +prompt("Введите первое число:");
+const num1 = +prompt("Задание 3: \nВведите первое число:");
 if (num1) {
   const num2 = +prompt("Введите второе число:");
   if (num2) {
@@ -52,7 +56,7 @@ if (num1) {
   console.log("");
 }
 
-const usName = prompt("Введите ваше имя:");
+const usName = prompt("Задание 3: \nВведите ваше имя:");
 if (usName) {
   const age = +prompt("Введите ваш возраст:");
   age >= 18
@@ -62,8 +66,9 @@ if (usName) {
   console.log("");
 }
 
-const number = +prompt("Введите любое число:");
-if (!isNaN(number)) {
+const number = +prompt("Задание 4: \nВведите любое число:");
+if (number) {
+  if (!isNaN(number)) {
     switch (number) {
       case 0:
         console.log(`${number} -> ноль`);
@@ -99,6 +104,77 @@ if (!isNaN(number)) {
         console.log("Данные введены некорректно: число должно быть от 0 до 9!");
         break;
     }
+  } else {
+    console.log("Данные введены некорректно: необходимо ввести число!");
+  }
 } else {
-  console.log("Данные введены некорректно: необходимо ввести число!");
+  console.log("");
 }
+
+function zodiak(str) {
+  const i = str.indexOf("/");
+  const day = +str.slice(0, i);
+  const month = +str.slice(-i + 1);
+  if (
+    !isNaN(day) &&
+    !isNaN(month) &&
+    month > 0 &&
+    month < 13 &&
+    day > 0 &&
+    day < 32
+  ) {
+    switch (month) {
+      case 1:
+        day < 21
+          ? console.log(`${str}-Козерог`)
+          : console.log(`${str}-Водолей`);
+        break;
+      case 2:
+        if (day > 29) {
+          console.log("Ошибка! в Феврале не более 29 дней!");
+          break;
+        } else {
+          day < 20 ? console.log(`${str}-Водолей`) : console.log(`${str}-Рыбы`);
+          break;
+        }
+      case 3:
+        day < 21 ? console.log(`${str}-Рыбы`) : console.log(`${str}-Овен`);
+        break;
+      case 4:
+        day < 21 ? console.log(`${str}-Овен`) : console.log(`${str}-Телец`);
+        break;
+      case 5:
+        day < 22 ? console.log(`${str}-Телец`) : console.log(`${str}-Близнецы`);
+        break;
+      case 6:
+        day < 22 ? console.log(`${str}-Близнецы`) : console.log(`${str}-Рак`);
+        break;
+      case 7:
+        day < 23 ? console.log(`${str}-Рак`) : console.log(`${str}-Лев`);
+        break;
+      case 8:
+        day < 22 ? console.log(`${str}-Лев`) : console.log(`${str}-Дева`);
+        break;
+      case 9:
+        day < 24 ? console.log(`${str}-Дева`) : console.log(`${str}-Весы`);
+        break;
+      case 10:
+        day < 24 ? console.log(`${str}-Весы`) : console.log(`${str}-Скорпион`);
+        break;
+      case 11:
+        day < 23
+          ? console.log(`${str}-Скорпион`)
+          : console.log(`${str}-Стрелец`);
+        break;
+      case 12:
+        day < 23
+          ? console.log(`${str}-Стрелец`)
+          : console.log(`${str}-Козерог`);
+        break;
+    }
+  } else {
+    console.log("Данные введены некорректно!");
+  }
+}
+const date = prompt("Введите дату, чтобы узнать знак зодиака:\nПример: 01/01");
+zodiak(date);
